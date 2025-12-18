@@ -1,6 +1,10 @@
 # Parody PostgreSQL website
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+_Automatically synced with your [v0.app](https://v0.app) deployments_
+
+## Do Whatever You Want
+
+This is a parody site. Clone it, fork it, remix it, deploy it, or just laugh at it. No restrictions, no license drama—just use it however you want.
 
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/mritzreals-projects/v0-parody-postgre-sql-website)
 [![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/pH1tNnDtssV)
