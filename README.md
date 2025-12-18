@@ -1,4 +1,4 @@
-# Just Fucking Use PostgreSQL
+# Just Use PostgreSQL
 
 A parody website for all the PostgreSQL lovers out there.
 
