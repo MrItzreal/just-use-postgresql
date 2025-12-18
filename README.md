@@ -1,34 +1,17 @@
-# Parody PostgreSQL website
+# Just Fucking Use PostgreSQL
 
-_Automatically synced with your [v0.app](https://v0.app) deployments_
+A parody website for all the PostgreSQL lovers out there.
 
 ## Do Whatever You Want
 
-This is a parody site. Clone it, fork it, remix it, deploy it, or just laugh at it. No restrictions, no license drama—just use it however you want.
+I made this for fun. If you're here, it's probably because you love PostgreSQL just like me.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/mritzreals-projects/v0-parody-postgre-sql-website)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/pH1tNnDtssV)
+Clone it, fork it, remix it, deploy it, roast it on Twitter, print it and hang it on your wall—literally do whatever you want with it. No restrictions, no license drama, no bullshit.
 
-## Overview
+## Live Site
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+Check it out: **[just-use-postgresql](https://just-use-postgresql.vercel.app/)**
 
-## Deployment
+---
 
-Your project is live at:
-
-**[https://vercel.com/mritzreals-projects/v0-parody-postgre-sql-website](https://vercel.com/mritzreals-projects/v0-parody-postgre-sql-website)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.app/chat/pH1tNnDtssV](https://v0.app/chat/pH1tNnDtssV)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Made with PostgreSQL (obviously) and a healthy dose of sarcasm.
