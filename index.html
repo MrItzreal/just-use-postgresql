@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Just Fucking Use PostgreSQL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* Dark mode styles */
+      body.dark {
+        background-color: #0a0a0a;
+        color: #e5e5e5;
+      }
+
+      body.dark a {
+        color: #60a5fa;
+      }
+
+      body.dark strong {
+        color: #22d3ee;
+      }
+
+      body.dark code {
+        background-color: #1a1a1a;
+        color: #22d3ee;
+      }
+
+      body.dark .border-gray-700 {
+        border-color: #374151;
+      }
+
+      body.dark .text-gray-400 {
+        color: #9ca3af;
+      }
+
+      body.dark .text-gray-500 {
+        color: #6b7280;
+      }
+
+      /* Light mode styles */
+      body.light {
+        background-color: #ffffff;
+        color: #1a1a1a;
+      }
+
+      body.light a {
+        color: #2563eb;
+      }
+
+      body.light strong {
+        color: #0891b2;
+      }
+
+      body.light code {
+        background-color: #f3f4f6;
+        color: #0891b2;
+      }
+
+      body.light .border-gray-700 {
+        border-color: #d1d5db;
+      }
+
+      body.light .text-gray-400 {
+        color: #6b7280;
+      }
+
+      body.light .text-gray-500 {
+        color: #9ca3af;
+      }
+
+      /* Theme toggle button styles */
+      .theme-toggle {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        z-index: 1000;
+      }
+
+      body.dark .theme-toggle {
+        background-color: transparent;
+        border-color: #374151;
+        color: #9ca3af;
+      }
+
+      body.dark .theme-toggle:hover {
+        border-color: #22d3ee;
+        color: #22d3ee;
+      }
+
+      body.light .theme-toggle {
+        background-color: transparent;
+        border-color: #d1d5db;
+        color: #6b7280;
+      }
+
+      body.light .theme-toggle:hover {
+        border-color: #0891b2;
+        color: #0891b2;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      code {
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+      }
+
+      /* Center content container with max-width for proper text wrapping like a blog post */
+      .content-wrapper {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 4rem 1.5rem;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      main {
+        text-align: left;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 6rem;
+      }
+
+      section {
+        margin-bottom: 4rem;
+      }
+
+      h2 {
+        border-bottom: 2px solid;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      body.dark h2 {
+        border-color: #374151;
+      }
+
+      body.light h2 {
+        border-color: #d1d5db;
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body class="dark">
+    <!-- Theme toggle button -->
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+    <!-- Wrapped all content in a centered container with max-width for text wrapping -->
+    <div class="content-wrapper">
+      <header>
+        <h1 class="text-5xl font-bold mb-4">Just Fucking Use PostgreSQL</h1>
+        <p class="text-xl text-gray-400">
+          Stop overthinking it. It's literally a database that does everything.
+        </p>
+      </header>
+
+      <main>
+        <section>
+          <h2 class="text-3xl font-bold">What the fuck is PostgreSQL?</h2>
+          <p class="text-lg mb-4">
+            It's a fucking <strong>relational database</strong> that's been
+            around since 1996. That's longer than most JavaScript frameworks
+            have been alive (RIP to the 47 frameworks that died while you read
+            this).
+          </p>
+          <p class="text-lg mb-4">
+            It stores your data. It retrieves your data. It doesn't try to be
+            your friend, your cloud platform, or your goddamn lifestyle choice.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold">
+            Building a chat app? Use PostgreSQL.
+          </h2>
+          <p class="text-lg mb-4">
+            "But I need real-time features!" you cry, reaching for Redis,
+            MongoDB, Firebase, and seventeen other databases like you're
+            collecting Pokémon cards.
+          </p>
+          <p class="text-lg mb-4">
+            PostgreSQL has <code>LISTEN/NOTIFY</code>. It's had it since before
+            you were born. It does pub/sub. Real-time. Without making you learn
+            a whole new fucking database.
+          </p>
+          <p class="text-lg mb-4">
+            Store messages? ✓<br />
+            Store users? ✓<br />
+            Store sessions? ✓<br />
+            Full-text search? ✓<br />
+            Literally everything? <strong>✓</strong>
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold">
+            Building an e-commerce site? Use PostgreSQL.
+          </h2>
+          <p class="text-lg mb-4">
+            "I need to store products AND handle transactions!"
+          </p>
+          <p class="text-lg mb-4">
+            Yeah, that's called a fucking <strong>ACID transaction</strong>, and
+            PostgreSQL invented that shit. Well, not invented, but it does them
+            better than your ex did anything.
+          </p>
+          <p class="text-lg mb-4">
+            Orders, inventory, users, payment logs, shopping carts, wish lists,
+            product reviews—all in one place. With foreign keys. Remember those?
+            Data integrity? Or are we just raw-dogging data consistency now?
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold">
+            Building a social network? Use PostgreSQL.
+          </h2>
+          <p class="text-lg mb-4">
+            "But graphs! I need a graph database for followers and connections!"
+          </p>
+          <p class="text-lg mb-4">
+            PostgreSQL has <strong>recursive CTEs</strong>. You can traverse
+            your entire social graph faster than you can explain to your manager
+            why you need Neo4j.
+          </p>
+          <p class="text-lg mb-4">
+            Posts, comments, likes, followers, notifications, DMs—it's all just
+            fucking rows. Stop making it complicated.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold">
+            Building a geolocation app? Use PostgreSQL.
+          </h2>
+          <p class="text-lg mb-4">
+            PostgreSQL + PostGIS = finding nearby pizza places without
+            installing MongoDB just because it has "geospatial indexes."
+          </p>
+          <p class="text-lg mb-4">
+            It does points, polygons, radius searches, and probably your taxes
+            if you ask nicely.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold">
+            Need full-text search? Use PostgreSQL.
+          </h2>
+          <p class="text-lg mb-4">
+            "I'll just add Elasticsearch!" you say, pulling out your credit card
+            and your DevOps engineer's therapy bills.
+          </p>
+          <p class="text-lg mb-4">
+            PostgreSQL has built-in full-text search with
+            <code>tsvector</code> and <code>tsquery</code>. It's not as fancy,
+            but neither is your startup's search traffic of 12 users.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold">
+            Need to store JSON? Use PostgreSQL.
+          </h2>
+          <p class="text-lg mb-4">"I need MongoDB for flexible schemas!"</p>
+          <p class="text-lg mb-4">
+            PostgreSQL has <code>JSONB</code>. It stores JSON. It indexes JSON.
+            It queries JSON faster than Mongo on a good day. And you still get
+            all the relational stuff when you inevitably realize "flexible
+            schema" means "fucking chaos."
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold">Need a cache? Use PostgreSQL.</h2>
+          <p class="text-lg mb-4">"Redis is so much faster!"</p>
+          <p class="text-lg mb-4">
+            Cool. You know what's faster than maintaining two databases?
+            <strong>One database.</strong>
+          </p>
+          <p class="text-lg mb-4">
+            Use materialized views. Use unlogged tables. Use a fucking SELECT
+            query because you have 47 monthly active users and your "performance
+            problem" is imaginary.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold">Need a queue? Use PostgreSQL.</h2>
+          <p class="text-lg mb-4">
+            RabbitMQ? Kafka? AWS SQS? Or... hear me out... a fucking table with
+            a status column.
+          </p>
+          <p class="text-lg mb-4">
+            <code>SELECT FOR UPDATE SKIP LOCKED</code> gives you a job queue.
+            Done. No new infrastructure. No new AWS bill. No new database to
+            learn.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold">
+            Need time-series data? Use PostgreSQL.
+          </h2>
+          <p class="text-lg mb-4">"But InfluxDB! TimescaleDB! Prometheus!"</p>
+          <p class="text-lg mb-4">
+            TimescaleDB <em>is</em> PostgreSQL, genius. And regular PostgreSQL
+            handles time-series data just fine unless you're literally Google.
+            You're not Google. Google doesn't use your SaaS boilerplate.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold">But what about scale?!</h2>
+          <p class="text-lg mb-4">
+            PostgreSQL scales to <strong>terabytes</strong>. Instagram used it.
+            Apple uses it. Spotify uses it. They have more users than you have
+            GitHub stars.
+          </p>
+          <p class="text-lg mb-4">
+            Your app with 300 concurrent users doesn't need sharding. It needs
+            better indexes and maybe therapy.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-3xl font-bold">But I like NoSQL flexibility!</h2>
+          <p class="text-lg mb-4">
+            "Flexible schema" is just "we didn't plan our data model" with
+            marketing.
+          </p>
+          <p class="text-lg mb-4">
+            You know what's flexible? <code>ALTER TABLE</code>. You know what's
+            not flexible? Debugging production data inconsistencies at 3 AM
+            because your "schema-less" database let you store anything anywhere.
+          </p>
+        </section>
+
+        <section class="border-t-2 border-gray-700 pt-12">
+          <h2 class="text-3xl font-bold">
+            Fine, but when should I NOT use PostgreSQL?
+          </h2>
+          <p class="text-lg mb-4">
+            When you're actually Google-scale. When you need sub-millisecond
+            latency for millions of concurrent operations. When you're
+            processing petabytes.
+          </p>
+          <p class="text-lg mb-4">
+            But you're not. You're building a to-do app with auth.
+            <strong>Use PostgreSQL.</strong>
+          </p>
+        </section>
+      </main>
+
+      <footer class="text-gray-500">
+        <p class="mb-2">Made with PostgreSQL (obviously)</p>
+        <p class="text-sm">
+          Inspired by all the other "just fucking use" sites. You know the ones.
+        </p>
+      </footer>
+    </div>
+
+    <!-- Theme toggle script -->
+    <script>
+      // Check for saved theme preference or default to dark
+      const savedTheme = localStorage.getItem("theme") || "dark";
+      document.body.className = savedTheme;
+
+      function toggleTheme() {
+        const currentTheme = document.body.classList.contains("dark")
+          ? "dark"
+          : "light";
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+        document.body.className = newTheme;
+        localStorage.setItem("theme", newTheme);
+      }
+    </script>
+  </body>
+</html>
