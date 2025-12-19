@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Just Fucking Use PostgreSQL</title>
+    <title>Just Use PostgreSQL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       body {
@@ -304,8 +304,8 @@
             <strong>ONE DATABASE.</strong>
           </p>
           <p class="text-lg mb-4">
-            Use materialized views. Use unlogged tables. Use a SELECT
-            query because you have 47 monthly active users and your "performance
+            Use materialized views. Use unlogged tables. Use a SELECT query
+            because you have 47 monthly active users and your "performance
             problem" is imaginary.
           </p>
         </section>
@@ -313,8 +313,8 @@
         <section>
           <h2 class="text-3xl font-bold">Need a queue? Use PostgreSQL.</h2>
           <p class="text-lg mb-4">
-            RabbitMQ? Kafka? AWS SQS? Or... hear me out... a simple table with
-            a status column.
+            RabbitMQ? Kafka? AWS SQS? Or... hear me out... a simple table with a
+            status column.
           </p>
           <p class="text-lg mb-4">
             <code>SELECT FOR UPDATE SKIP LOCKED</code> gives you a job queue.
